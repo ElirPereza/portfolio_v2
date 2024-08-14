@@ -28,10 +28,9 @@ const MobileNav = () => {
         </div>
         <nav className="flex flex-col justify-center items-center gap-8">
           {siteConfig.mobileNav.map((site, index) => (
-            <SheetClose asChild>
+            <SheetClose asChild key={index}>
               <Link
                 href={site.href}
-                key={index}
                 className={`${
                   site.href === pathname &&
                   "text-accent border-b-2 border-accent"
