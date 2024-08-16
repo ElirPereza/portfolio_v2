@@ -32,33 +32,66 @@ interface Project {
 const projects: Project[] = [
   {
     num: "01",
-    category: "frontend",
-    title: "Project1",
-    description: "sdagfkjsadhfjkashkjfhaskjhfsakjhfkshfkjhaskdfhj",
-    stack: [{ name: "Html5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "linkpage",
-    github: "https://github.com/jmaldona18/project1",
+    category: "Full Stack",
+    title: "CRUD APP",
+    description: "This project is a CRUD (Create, Read, Update, Delete) application developed to showcase skills in modern web development. The application allows users to manage data through an intuitive and functional interface, incorporating advanced search features for a better user experience.",
+    stack: [
+      { name: "Typescript" }, 
+      { name: "React" }, 
+      { name: "Reactquery" },
+      { name: "React Hook Form" },
+      { name: "Next JS" },
+      { name: "Tailwind" },
+      { name: "Node" },
+      { name: "Express" },
+      { name: "MondoDB" },
+      { name: "ShadCN" },
+      { name: "Zustand" },
+    ],
+    image: "/Crud.png",
+    live: "https://crud-app-zeta-ashy.vercel.app/",
+    github: "https://github.com/ElirPereza/Crud-App",
   },
   {
     num: "02",
-    category: "frontend",
-    title: "Project2",
-    description: "sdagfkjsadhfjkashkjfhaskjhfsakjhfkshfkjhaskdfhj",
-    stack: [{ name: "Html5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "linkpage",
+    category: "Frontend",
+    title: "APP FINANCE MANAGEMENT MODEL",
+    description: "I developed banking application using modern technologies such as Supabase, React, Next.js, and Tailwind CSS. This application includes user registration and login functionalities,as well as a well-designed user interface for managing bank accounts, making transfers, and viewing transaction history.",
+    stack: [
+      { name: "Typescript" }, 
+      { name: "React" }, 
+      { name: "Reactquery" },
+      { name: "React Hook Form" },
+      { name: "Next JS" },
+      { name: "Tailwind" },
+      { name: "Node" },
+      { name: "CSS" },
+      { name: "Supabase" },
+      { name: "ShadCN" },
+      { name: "Zustand" },
+      { name: "Axios" },
+    ],
+    image: "/bank_3.png",
+    live: "https://bank-app-master-f.vercel.app/auth/login",
     github: "https://github.com/jmaldona18/project2",
   },
   {
     num: "03",
-    category: "frontend",
-    title: "Project3",
-    description: "sdagfkjsadhfjkashkjfhaskjhfsakjhfkshfkjhaskdfhj",
-    stack: [{ name: "Html5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "linkpage",
-    github: "https://github.com/jmaldona18/project3",
+    category: "Frontend",
+    title: "Portfolio First version",
+    description: "This project marked the beginning of my journey in web development, where I explored and learned how to use the NextUI component library. While creating this portfolio, I focused on designing a modern and responsive interface that showcased my emerging frontend development skills. The process allowed me to deepen my understanding of integrating dynamic and styled components, while enhancing my grasp of application architecture in Next.js. This portfolio not only reflects my growth as a developer but also my ability to learn and apply new technologies effectively.",
+    stack: [
+      { name: "Typescript" }, 
+      { name: "React" }, 
+      { name: "React Hook Form" },
+      { name: "Next JS" },
+      { name: "Tailwind" },
+      { name: "Node" },
+      { name: "Nextui" },
+    ],
+    image: "/portfolio1.png",
+    live: "https://porfolio-final-version.vercel.app/projects",
+    github: "https://github.com/ElirPereza/porfolio_final_version",
   },
 ];
 
@@ -81,13 +114,14 @@ const Work: React.FC = () => {
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
                 {project.num}
               </div>
+              <h3 className="text-2xl text-accent">{project.title}</h3>
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
                 {project.category} project
               </h2>
               {/* project description */}
               <p className="text-white/60">{project.description}</p>
               {/* stacks */}
-              <ul className="flex gap-4">
+              <ul className="flex flex-wrap gap-2">
                 {project.stack.map((item, index) => (
                   <li className="text-xl text-accent" key={item.name}>
                     {item.name}

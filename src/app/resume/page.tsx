@@ -4,11 +4,11 @@ import { icons } from "lucide-react";
 import { title } from "process";
 import {
   FaHtml5,
-  FaCss3,
   FaJs,
   FaReact,
   FaFigma,
   FaNodeJs,
+  FaCss3Alt,
 } from "react-icons/fa";
 import {
   SiDjango,
@@ -20,7 +20,6 @@ import {
   SiNpm,
   SiPostman,
   SiPython,
-  SiReact,
   SiRedux,
   SiSass,
   SiTailwindcss,
@@ -28,7 +27,14 @@ import {
   SiYarn,
   SiVite,
   SiNextdotjs,
+  SiBun,
+  SiShadcnui,
+  SiExpress,
+  SiSurrealdb,
+  SiDatastax,
+  SiTensorflow,
 } from "react-icons/si";
+import {RiSupabaseFill }from "react-icons/ri"
 import {
   LuUserCircle,
   LuSmartphone,
@@ -37,7 +43,8 @@ import {
   LuBriefcase,
   LuLanguages,
 } from "react-icons/lu";
-import { TbWorld } from "react-icons/tb";
+import { TbApi, TbWorld } from "react-icons/tb";
+import { BiLogoPostgresql  } from "react-icons/bi";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -46,7 +53,9 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
+import Image from "next/image";
+import { Ollama } from "@/components/config/icon";
 
 const about = {
   title: "About me",
@@ -83,22 +92,17 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "Mi Experience",
   description:
-    "bsdfkjsakjhfka  shdfkha fkashkfhaskfhkashfkashkfhaskfhkjashfkshfkhk  dshfksdhfkdshjf",
+    "I have experience developing projects ranging from landpages to SaaS applications and dashboards, using technologies such as Next.js, React, and Tailwind CSS. Where I have applied my knowledge in web optimization, SEO, service integration, databases and AI. I also have experience as an electronic engineer working in the industrial sector programming logic controllers.",
   items: [
     {
-      company: "tech solutions inc",
-      position: "full stack developer",
-      duration: "2021-present",
+      company: "Freelance",
+      position: "FrontEnd developer",
+      duration: "2023-present",
     },
     {
-      company: "tech solutions inc",
-      position: "full stack developer",
-      duration: "2021-present",
-    },
-    {
-      company: "tech solutions inc",
-      position: "full stack developer",
-      duration: "2021-present",
+      company: "COVEIN Speed, Growth & Control",
+      position: "Electronics engineering",
+      duration: "2022-2023",
     },
   ],
 };
@@ -107,22 +111,22 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "Mi Education",
   description:
-    "bsdfkjsakjhfka  shdfkha fkashkfhaskfhkashfkashkfhaskfhkjashfkshfkhk  dshfksdhfkdshjf",
+    "I am an electronic engineer from Universidad de la Costa, with a solid background in programming. I keep myself in constant learning to continue developing as a professional in technology.",
   items: [
     {
-      company: "tech solutions inc",
-      posotion: "full stack developer",
-      duration: "2021-present",
+      institution: "University of the Coast",
+      degree: "Electronic engineering ",
+     duration: "2017-2022",
     },
     {
-      company: "tech solutions inc",
-      posotion: "full stack developer",
-      duration: "2021-present",
+      institution: "University of the Coast",
+      degree: "Project Management Diploma",
+      duration: "2021-2022",
     },
     {
-      company: "tech solutions inc",
-      posotion: "full stack developer",
-      duration: "2021-present",
+      institution: "React: De cero a experto ( Hooks y MERN) ",
+      degree: "Frontend developer",
+      duration: "2022",
     },
   ],
 };
@@ -133,97 +137,112 @@ const skills = {
   description:
     "bsdfkjsakjhfka  shdfkha fkashkfhaskfhkashfkashkfhaskfhkjashfkshfkhk  dshfksdhfkdshjf",
   skillList: [
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
 
     {
       icon: <FaHtml5 />,
       name: "Html5",
     },
     {
-      icon: <FaReact />,
-      name: "React",
+      icon: <FaJs />,
+      name: " Javascript",
     },
     {
-      icon: <FaHtml5 />,
-      name: "Html5",
+      icon: < SiPython />,
+      name: "python",
+    },
+    {
+      icon: <SiTypescript />,
+      name: "Typescript",
+    },
+    {
+      icon: <FaCss3Alt />,
+      name: "Css3",
+    },
+    {
+      icon: <SiSass />,
+      name: "Sass",
+    },
+    {
+      icon: <FaNodeJs />,
+      name: "Nodejs",
+    },
+    {
+      icon: <SiBun />,
+      name: "Bun",
+    },
+    {
+      icon: <FaFigma />,
+      name: "Figma",
     },
 
     {
-      icon: <FaHtml5 />,
+      icon: < SiGit />,
+      name: "Git",
+    },
+    {
+      icon: < SiGithub />,
+      name: "Github",
+    },
+    {
+      icon: <SiTailwindcss />,
       name: "Html5",
+    },
+    {
+      icon: <SiShadcnui />,
+      name: "Shadcnui",
     },
     {
       icon: <FaReact />,
       name: "React",
     },
     {
-      icon: <FaHtml5 />,
-      name: "Html5",
+      icon: <SiVite />,
+      name: "Vite",
+    },
+    {
+      icon: <SiNextdotjs />,
+      name: "Nextjs",
+    },
+    {
+      icon: <SiRedux />
+      ,
+      name: "Redux",
+    },
+    {
+      icon: <TbApi />,
+      name: "Api REST",
+    },
+    {
+      icon: <RiSupabaseFill />,
+      name: "Supabase",
+    },
+    {
+      icon: <BiLogoPostgresql/>,
+      name: "Postgresql",
     },
 
     {
-      icon: <FaHtml5 />,
-      name: "Html5",
+      icon: <SiMongodb/>      ,
+      name: "mongo DB",
     },
     {
-      icon: <FaReact />,
-      name: "React",
+      icon: <SiExpress />      ,
+      name: "Express",
     },
     {
-      icon: <FaHtml5 />,
-      name: "Html5",
+      icon: <SiDatastax />     ,
+      name: "Astra DB",
+    },
+    {
+      icon: <Ollama/>   ,
+      name: "Ollama",
+    },
+    {
+      icon: <SiTensorflow />  ,
+      name: "Tensorflow",
     },
 
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
-    {
-      icon: <FaReact />,
-      name: "React",
-    },
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
 
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
-    {
-      icon: <FaReact />,
-      name: "React",
-    },
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
-
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
-    {
-      icon: <FaReact />,
-      name: "React",
-    },
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
-
-    {
-      icon: <FaHtml5 />,
-      name: "Html5",
-    },
-    {
-      icon: <FaReact />,
-      name: "React",
-    },
   ],
 };
 
@@ -289,15 +308,15 @@ const Resume = () => {
                     {education.items.map((item, index) => (
                       <li
                         key={index}
-                        className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                        className="bg-[#232329] h-[200px] py-6 px-4 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                       >
                         <span className="text-accent">{item.duration}</span>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                          {item.duration} {/*degree */}
+                          {item.degree} {/*degree */}
                         </h3>
                         <div className="flex items-center gap-3">
                           <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                          <p className="text-white/60">{item.company}</p>{" "}
+                          <p className="text-white/60">{item.institution}</p>{" "}
                           {/* institution */}
                         </div>
                       </li>

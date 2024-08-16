@@ -51,8 +51,10 @@ const Contact = () => {
             >
               <h3 className="text-4xl text-accent">let&apos;s work together</h3>
               <p className="text-white/60">
-                ghfkjshdkalfhkajshkfjsakjfhksjahfkshakfhaskfhkshdkfhskdfhksdhfhskdhhdsfhksdhfksgdfjgshdjf
-                gajsdhfgjhsdgfjhsdghjfhgdhjfgsdjhgfjhsgdjfgjsdgf
+              I'm always excited to connect with others, whether it's to discuss potential 
+              collaborations, explore new opportunities, or simply share ideas. If you have 
+              any questions, projects in mind, or just want to say hello, feel free to reach out! I'll get back 
+              to you as soon as possible. Let's create something amazing together!.
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
