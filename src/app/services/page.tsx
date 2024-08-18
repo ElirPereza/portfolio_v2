@@ -9,7 +9,7 @@ const servicesData = [
     num: "01",
     title: "Frontend Development",
     description:
-      "Building modern web applications with technologies such as react(JS) and reflex(PY) , including the design and implementation of responsive and optimized user interfaces.",
+      "Building modern web applications with technologies such as ReactJS and NextJS , including the design and implementation of responsive and optimized user interfaces.",
     href: "",
   },
   {

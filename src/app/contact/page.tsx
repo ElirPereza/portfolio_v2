@@ -15,9 +15,10 @@ import { title } from "process";
 import { FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-import { EmailTemplateProps } from "../api/send/route";
 import { useSendEmail } from "@/hook/useSend";
 import { toast } from "@/components/ui/use-toast";
+import { contactSchemaType, contactSchema } from "@/schema/contac-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const info = [
   {
@@ -38,7 +39,7 @@ const info = [
 ];
 
 const Contact = () => {
-  const { mutate, isError, isSuccess } = useSendEmail();
+  const { mutate } = useSendEmail();
   const [selectedService, setSelectedService] = useState("");
   const {
     register,
@@ -46,10 +47,12 @@ const Contact = () => {
     reset,
     formState: { errors },
     setValue,
-  } = useForm<EmailTemplateProps>();
+  } = useForm<contactSchemaType>({
+    resolver: zodResolver(contactSchema),
+  });
+  console.log(errors);
 
-  const onSubmit: SubmitHandler<EmailTemplateProps> = async (data) => {
-    
+  const onSubmit: SubmitHandler<contactSchemaType> = async (data) => {
     mutate(data, {
       onSuccess: () => {
         toast({
@@ -61,7 +64,8 @@ const Contact = () => {
       onError: () => {
         toast({
           title: "Error",
-          description: "There was an error sending your message. Please try again.",
+          description:
+            "There was an error sending your message. Please try again.",
         });
       },
     });
@@ -97,27 +101,40 @@ const Contact = () => {
                 together!.
               </p>
               {/* input */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-4">
                 <Input
                   type="firstname"
                   placeholder="Firstname"
                   {...register("firstName")}
+      
                 />
+                {errors.firstName && (
+                  <p className="text-red-500">{errors.firstName.message}</p>
+                )}
                 <Input
                   type="lastname"
                   placeholder="Lastname"
                   {...register("lastname")}
                 />
+                {errors.lastname && (
+                  <p className="text-red-500">{errors.lastname.message}</p>
+                )}
                 <Input
                   type="email"
                   placeholder="Email address"
                   {...register("email")}
                 />
+                {errors.email && (
+                  <p className="text-red-500">{errors.email.message}</p>
+                )}
                 <Input
                   type="phone"
                   placeholder="Phone number"
                   {...register("phone")}
                 />
+                {errors.phone && (
+                  <p className="text-red-500">{errors.phone.message}</p>
+                )}
               </div>
               <Select
                 value={selectedService}
@@ -136,12 +153,18 @@ const Contact = () => {
                   <SelectItem value="Smart Home">Smart Home</SelectItem>
                 </SelectContent>
               </Select>
+              {errors.service && (
+                <p className="text-red-500">{errors.service.message}</p>
+              )}
               {/* Textarea */}
               <Textarea
                 className="h-[200px]"
                 placeholder="Type your message"
                 {...register("message")}
               />
+              {errors.message && (
+                <p className="text-red-500">{errors.message.message}</p>
+              )}
               {/* btn */}
               <Button size={"md"} type="submit" className="flex max-w-full ">
                 Send message{" "}
