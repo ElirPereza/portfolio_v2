@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/global/header";
 import StairTransition from "@/components/global/animations/stairtransition";
 import PageTransition from "@/components/global/animations/pagetransition";
+import QueryProvider from "@/provider/query-provider";
 
 const fount = JetBrains_Mono({
   subsets: ["latin"],
@@ -25,8 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={fount.className}>
         <Header />
-        <StairTransition/>
-        <PageTransition>{children}</PageTransition>
+        <StairTransition />
+        <PageTransition>
+          <QueryProvider>{children}</QueryProvider>
+        </PageTransition>
       </body>
     </html>
   );

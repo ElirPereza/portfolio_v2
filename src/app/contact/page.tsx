@@ -13,6 +13,11 @@ import { motion } from "framer-motion";
 import { link } from "fs";
 import { title } from "process";
 import { FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
+import { EmailTemplateProps } from "../api/send/route";
+import { useSendEmail } from "@/hook/useSend";
+import { toast } from "@/components/ui/use-toast";
 
 const info = [
   {
@@ -33,6 +38,38 @@ const info = [
 ];
 
 const Contact = () => {
+  const { mutate, isError, isSuccess } = useSendEmail();
+  const [selectedService, setSelectedService] = useState("");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    setValue,
+  } = useForm<EmailTemplateProps>();
+
+  const onSubmit: SubmitHandler<EmailTemplateProps> = (data) => {
+    mutate(data, {
+      onSuccess: () => {
+        toast({
+          title: "Success",
+          description: "Your message has been sent successfully!",
+        });
+        reset();
+      },
+      onError: () => {
+        toast({
+          title: "Error",
+          description: "There was an error sending your message. Please try again.",
+        });
+      },
+    });
+  };
+
+  const handleSelectChange = (value: any) => {
+    setSelectedService(value);
+    setValue("service", value);
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -46,38 +83,66 @@ const Contact = () => {
           {/* form */}
           <div className="xl:h-[54%] order-2 xl:order-none">
             <form
-              action=""
+              onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-6 p-10 bg-[#27272C] rounded-xl"
             >
               <h3 className="text-4xl text-accent">let&apos;s work together</h3>
               <p className="text-white/60">
-              I'm always excited to connect with others, whether it's to discuss potential 
-              collaborations, explore new opportunities, or simply share ideas. If you have 
-              any questions, projects in mind, or just want to say hello, feel free to reach out! I'll get back 
-              to you as soon as possible. Let's create something amazing together!.
+                I'm always excited to connect with others, whether it's to
+                discuss potential collaborations, explore new opportunities, or
+                simply share ideas. If you have any questions, projects in mind,
+                or just want to say hello, feel free to reach out! I'll get back
+                to you as soon as possible. Let's create something amazing
+                together!.
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  type="firstname"
+                  placeholder="Firstname"
+                  {...register("firstName")}
+                />
+                <Input
+                  type="lastname"
+                  placeholder="Lastname"
+                  {...register("lastname")}
+                />
+                <Input
+                  type="email"
+                  placeholder="Email address"
+                  {...register("email")}
+                />
+                <Input
+                  type="phone"
+                  placeholder="Phone number"
+                  {...register("phone")}
+                />
               </div>
-              <Select>
+              <Select
+                value={selectedService}
+                onValueChange={handleSelectChange}
+                {...register("service")}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="service1">Web Development</SelectItem>
-                  <SelectItem value="service2">SEO</SelectItem>
-                  <SelectItem value="service3">IA Consulting</SelectItem>
-                  <SelectItem value="service4">Smart Home</SelectItem>
+                  <SelectItem value="Web Development">
+                    Web Development
+                  </SelectItem>
+                  <SelectItem value="SEO">SEO</SelectItem>
+                  <SelectItem value="IA Consulting">IA Consulting</SelectItem>
+                  <SelectItem value="Smart Home">Smart Home</SelectItem>
                 </SelectContent>
               </Select>
               {/* Textarea */}
-              <Textarea className="h-[200px]" placeholder="Type your message" />
+              <Textarea
+                className="h-[200px]"
+                placeholder="Type your message"
+                {...register("message")}
+              />
               {/* btn */}
-              <Button size={"md"} className="flex max-w-full ">
+              <Button size={"md"} type="submit" className="flex max-w-full ">
                 Send message{" "}
               </Button>
             </form>
