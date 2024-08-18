@@ -48,7 +48,8 @@ const Contact = () => {
     setValue,
   } = useForm<EmailTemplateProps>();
 
-  const onSubmit: SubmitHandler<EmailTemplateProps> = (data) => {
+  const onSubmit: SubmitHandler<EmailTemplateProps> = async (data) => {
+    
     mutate(data, {
       onSuccess: () => {
         toast({
