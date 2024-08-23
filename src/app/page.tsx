@@ -23,14 +23,19 @@ export default function Home() {
             </p>
             {/* btn and social */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant={"outline"}
-                size={"lg"}
-                className="uppercase flex items-center gap-2"
+              <a
+                href="/maldonado_cv.pdf" // Aquí reemplazas con la ruta correcta de tu archivo CV
+                download="Maldonado_CV.pdf" // Nombre que se le dará al archivo descargado
               >
-                <span>Download CV</span>
-                <Download className="text-xl" />
-              </Button>
+                <Button
+                  variant={"outline"}
+                  size={"lg"}
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>Download CV</span>
+                  <Download className="text-xl" />
+                </Button>
+              </a>
               <div className="mb-8 xl:mb-0">
                 <Social
                   containerStyles="flex gap-6"
@@ -40,11 +45,11 @@ export default function Home() {
             </div>
           </div>
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
-            <Photo/>
+            <Photo />
           </div>
         </div>
       </div>
-      <Stats/>
+      <Stats />
     </section>
   );
 }
