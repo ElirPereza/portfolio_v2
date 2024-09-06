@@ -90,7 +90,7 @@ const about = {
 
 const experience = {
   icon: "/assets/resume/badge.svg",
-  title: "Mi Experience",
+  title: "My Experience",
   description:
     "I have experience developing projects ranging from landpages to SaaS applications and dashboards, using technologies such as Next.js, React, and Tailwind CSS. Where I have applied my knowledge in web optimization, SEO, service integration, databases and AI. I also have experience as an electronic engineer working in the industrial sector programming logic controllers.",
   items: [
@@ -109,7 +109,7 @@ const experience = {
 
 const education = {
   icon: "/assets/resume/cap.svg",
-  title: "Mi Education",
+  title: "My Education",
   description:
     "I am an electronic engineer from Universidad de la Costa, with a solid background in programming. I keep myself in constant learning to continue developing as a professional in technology.",
   items: [
@@ -133,9 +133,9 @@ const education = {
 
 const skills = {
   icon: "/assets/resume/cap.svg",
-  title: "Mi Education",
+  title: "My Skills",
   description:
-    "bsdfkjsakjhfka  shdfkha fkashkfhaskfhkashfkashkfhaskfhkjashfkshfkhk  dshfksdhfkdshjf",
+    "Aqui la lista de tecnologias que estoy usando constantemente.",
   skillList: [
 
     {
