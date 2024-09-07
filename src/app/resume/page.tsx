@@ -135,7 +135,7 @@ const skills = {
   icon: "/assets/resume/cap.svg",
   title: "My Skills",
   description:
-    "Aqui la lista de tecnologias que estoy usando constantemente.",
+    "Here is the list of technologies that I am constantly using.",
   skillList: [
 
     {
